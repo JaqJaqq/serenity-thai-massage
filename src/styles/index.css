@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply overflow-x-hidden bg-serenity-ivory text-serenity-charcoal antialiased;
+    background:
+      radial-gradient(circle at 82% 8%, rgba(244, 217, 141, 0.55), transparent 30rem),
+      radial-gradient(circle at 10% 24%, rgba(122, 86, 53, 0.2), transparent 26rem),
+      linear-gradient(135deg, #4d3424 0%, #9f793f 42%, #efd17e 100%);
+    margin: 0;
+    min-width: 320px;
+  }
+
+  a {
+    @apply transition-colors duration-200;
+  }
+}
+
+@layer components {
+  .gold-gradient {
+    @apply bg-gradient-to-r from-serenity-gold-dark via-serenity-gold to-serenity-gold-light;
+  }
+
+  .red-gradient {
+    @apply bg-gradient-to-r from-serenity-red-dark via-serenity-red to-serenity-red-soft;
+  }
+
+  .section-shell {
+    @apply mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 xl:py-24;
+  }
+
+  .luxury-panel {
+    @apply border border-serenity-gold/35 bg-serenity-ivory/95 shadow-soft;
+  }
+}
