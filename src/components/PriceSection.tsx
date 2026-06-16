@@ -1,8 +1,10 @@
+import { priceImages } from '../data/sectionImages';
 import SectionHeading from './SectionHeading';
+
+const priceImage = priceImages[0];
 
 type PriceItem = {
   name: string;
-  description: string;
   prices: {
     thirty: string;
     sixty: string;
@@ -13,34 +15,36 @@ type PriceItem = {
 
 const priceItems: PriceItem[] = [
   {
-    name: 'Traditional Thai Massage',
-    description: 'Classic Thai pressure and assisted stretching to restore balance.',
-    prices: { thirty: '£30', sixty: '£55', ninety: '£78', oneTwenty: '£98' },
+    name: 'Thai Traditional',
+    prices: { thirty: '£27', sixty: '£42', ninety: '£60', oneTwenty: '£82' },
   },
   {
-    name: 'Aromatherapy Oil Massage',
-    description: 'A gentle oil massage for calm, comfort, and full-body relaxation.',
-    prices: { thirty: '£32', sixty: '£60', ninety: '£85', oneTwenty: '£110' },
+    name: 'Thai Oil',
+    prices: { thirty: '£27', sixty: '£42', ninety: '£60', oneTwenty: '£82' },
   },
   {
-    name: 'Deep Tissue Massage',
-    description: 'Focused pressure for muscle tightness, stiffness, and fatigue.',
-    prices: { thirty: '£35', sixty: '£65', ninety: '£92', oneTwenty: '£120' },
+    name: 'Deep Tissue',
+    prices: { thirty: '£27', sixty: '£42', ninety: '£60', oneTwenty: '£82' },
   },
   {
-    name: 'Thai Foot Massage',
-    description: 'Foot and lower-leg massage to ease tiredness and improve comfort.',
-    prices: { thirty: '£28', sixty: '£50', ninety: '£72', oneTwenty: '£92' },
+    name: 'Swedish',
+    prices: { thirty: '£27', sixty: '£42', ninety: '£60', oneTwenty: '£82' },
   },
   {
-    name: 'Head, Neck & Shoulder Massage',
-    description: 'Targeted relief for desk tension and everyday upper-body strain.',
-    prices: { thirty: '£28', sixty: '£52', ninety: '£75', oneTwenty: '£95' },
+    name: 'Couples (same time, same room)',
+    prices: { thirty: '£49', sixty: '£82', ninety: '£112', oneTwenty: '£160' },
   },
   {
-    name: 'Couple Massage',
-    description: 'A shared relaxation session for two guests in a calming setting.',
-    prices: { thirty: '£55', sixty: '£105', ninety: '£150', oneTwenty: '£195' },
+    name: 'Hot Stones Addition',
+    prices: { thirty: '£5', sixty: '£5', ninety: '£5', oneTwenty: '£5' },
+  },
+  {
+    name: '3 in 1 Thai, Swedish and Hot Stones',
+    prices: { thirty: '', sixty: '£47', ninety: '£65', oneTwenty: '£87' },
+  },
+  {
+    name: 'Head, Neck Shoulder and Foot',
+    prices: { thirty: '£27', sixty: '£42', ninety: '£60', oneTwenty: '£82' },
   },
 ];
 
@@ -50,10 +54,21 @@ export default function PriceSection() {
       <div class="section-shell">
         <SectionHeading
           eyebrow="Price"
-          title="Simple sample pricing in GBP."
-          description="Placeholder prices are shown for structure only. Final durations, prices, and terms can be updated when the service menu is confirmed."
+          title="Massage prices in GBP."
+          description="Clear treatment pricing with common durations for traditional Thai massage, oil massage, deep tissue, and relaxing combinations."
           align="center"
         />
+
+        {priceImage && (
+          <div class="mx-auto mt-10 max-w-3xl overflow-hidden rounded-3xl border border-serenity-gold/35 bg-white shadow-gold">
+            <img
+              src={priceImage.src}
+              alt={priceImage.alt}
+              class="h-auto max-h-[42rem] w-full object-contain"
+              loading="lazy"
+            />
+          </div>
+        )}
 
         <div class="mt-10 grid gap-4 lg:hidden">
           {priceItems.map((item) => (
@@ -62,7 +77,6 @@ export default function PriceSection() {
                 <h3 class="text-lg font-bold text-white">{item.name}</h3>
               </div>
               <div class="p-5">
-                <p class="text-sm leading-6 text-serenity-cocoa">{item.description}</p>
                 <div class="mt-5 grid grid-cols-2 gap-3 text-sm">
                   <div class="rounded-xl bg-serenity-cream p-3">
                     <span class="block font-bold text-serenity-red">30 mins</span>
@@ -102,7 +116,6 @@ export default function PriceSection() {
                 <tr class="transition hover:bg-serenity-cream/70">
                   <td class="px-6 py-5">
                     <p class="text-lg font-bold text-serenity-brown">{item.name}</p>
-                    <p class="mt-1 max-w-xl text-sm leading-6 text-serenity-cocoa">{item.description}</p>
                   </td>
                   <td class="px-4 py-5 text-center text-lg font-bold">{item.prices.thirty}</td>
                   <td class="px-4 py-5 text-center text-lg font-bold text-serenity-red">{item.prices.sixty}</td>

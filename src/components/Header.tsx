@@ -1,4 +1,5 @@
 import { createSignal } from 'solid-js';
+import { logoImage } from '../data/logoImage';
 
 const navItems = [
   { label: 'Home', href: '#home' },
@@ -6,6 +7,7 @@ const navItems = [
   { label: 'Services', href: '#services' },
   { label: 'Price', href: '#price' },
   { label: 'Promotion', href: '#promotion' },
+  { label: 'Gallery', href: '#gallery' },
   { label: 'Contact', href: '#contact' },
 ];
 
@@ -36,15 +38,26 @@ export default function Header() {
         <div class="flex items-center justify-between gap-4">
           <a
             href="#home"
-            class="min-w-0 shrink text-base font-bold tracking-wide text-serenity-gold-light sm:text-xl"
+            class="flex min-w-0 shrink items-center gap-3 text-serenity-gold-light"
             onClick={(event) => handleNavClick(event, '#home')}
           >
-            Serenity Thai Massage
+            {logoImage ? (
+              <span class="flex h-11 w-[4.75rem] shrink-0 items-center justify-center overflow-hidden rounded-xl border border-serenity-gold/45 bg-black/80 px-1.5 py-1 shadow-sm sm:h-12 sm:w-24">
+                <img
+                  src={logoImage}
+                  alt="Serenity Thai Massage Monkseaton logo"
+                  class="h-full w-full object-contain"
+                />
+              </span>
+            ) : null}
+            <span class="min-w-0 truncate text-sm font-bold tracking-wide sm:text-lg">
+              Serenity Thai Massage
+            </span>
           </a>
 
           <button
             type="button"
-            class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-serenity-gold/45 bg-serenity-red text-white shadow-red md:hidden"
+            class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-serenity-gold/45 bg-serenity-red text-white shadow-red lg:hidden"
             aria-expanded={isOpen()}
             aria-controls="primary-navigation"
             onClick={() => setIsOpen((current) => !current)}
@@ -59,7 +72,7 @@ export default function Header() {
 
           <div
             id="primary-navigation"
-            class="hidden items-center gap-6 text-sm font-semibold text-serenity-cream md:flex lg:gap-8"
+            class="hidden items-center gap-6 text-sm font-semibold text-serenity-cream lg:flex xl:gap-8"
           >
             {navItems.map((item) => (
               <a
@@ -73,7 +86,7 @@ export default function Header() {
           </div>
         </div>
 
-        <div class={isOpen() ? 'mt-4 grid gap-2 rounded-2xl border border-serenity-gold/35 bg-serenity-ivory/95 p-3 shadow-gold md:hidden' : 'hidden'}>
+        <div class={isOpen() ? 'mt-4 grid gap-2 rounded-2xl border border-serenity-gold/35 bg-serenity-ivory/95 p-3 shadow-gold lg:hidden' : 'hidden'}>
           {navItems.map((item) => (
             <a
               href={item.href}

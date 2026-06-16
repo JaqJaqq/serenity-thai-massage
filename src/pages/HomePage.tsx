@@ -1,5 +1,6 @@
 import AboutSection from '../components/AboutSection';
 import ContactSection from '../components/ContactSection';
+import GallerySection from '../components/GallerySection';
 import Hero from '../components/Hero';
 import PriceSection from '../components/PriceSection';
 import PromotionSection from '../components/PromotionSection';
@@ -13,6 +14,7 @@ export default function HomePage() {
       <ServicesPreview />
       <PriceSection />
       <PromotionSection />
+      <GallerySection />
       <ContactSection />
     </>
   );
